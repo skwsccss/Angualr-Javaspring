@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 dark-blue"></div>
+    <div class="col-sm-2 ld-blue"></div>
+    <div class="col-sm-4 main">
+
+      <div class="col-sm-7">
+        <div class="addQuestion">
+          <mat-form-field class="example-full-width newQuestionInput">
+            <input matInput placeholder="Add new Question" (keyup.enter)="addQuestion(question)" #question>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-card class="mat-card text" *ngFor="let question of questions">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title style="font-size: 1.5rem">
+            {{question.questionText}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            <button class="btn btn-danger btn-sm" (click)="deleteQuestion(question.id)">Delete</button>
+            <button class="btn btn-secondary btn-sm" (click)="updateQuestion(question, questionZ)">Update</button>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="update Question" #questionZ>
+            </mat-form-field>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <ul class="list-group">
+            <div *ngFor="let option of question.questionOptions">
+              <div class="row myRow">
+                <div class="col-sm-8">
+                  <li class="list-group-item">{{option.optionText}} </li>
+                </div>
+                <button class="btn btn-danger btn-sm" (click)="deleteQuestionOption(option.id)">Delete</button>
+              </div>
+            </div>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="add answer" (keyup.enter)="addQuestionOption(question, answer)" #answer>
+          </mat-form-field>
+        </mat-card-actions>
+      </mat-card>
+      <!-- <ul class="list-group">
+        <div *ngFor="let question of questions">
+          {{question.questionText}}
+          <button class="btn btn-danger btn-sm" (click)="deleteQuestion(question.id)">Delete</button>
+          <button class="btn btn-secondary btn-sm" (click)="updateQuestion(question, questionZ)">Update</button>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="update Question" #questionZ>
+          </mat-form-field>
+
+          <ul class="list-group">
+            <div *ngFor="let option of question.questionOptions">
+              <div class="row myRow">
+                <div class="col-sm-8">
+                  <li class="list-group-item">{{option.optionText}} </li>
+                </div>
+                <button class="btn btn-danger btn-sm" (click)="deleteQuestionOption(option.id)">Delete</button>
+              </div>
+            </div>
+          </ul>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="add answer" (keyup.enter)="addQuestionOption(question, answer)" #answer>
+          </mat-form-field>
+        </div>
+      </ul> -->
+    </div>
+    <div class="col-sm-2 ld-blue2"></div>
+    <div class="col-sm-2 dark-blue"></div>
+  </div>
+</div>

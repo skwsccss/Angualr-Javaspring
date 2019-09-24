@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 dark-blue"></div>
+    <div class="col-sm-2 ld-blue"></div>
+    <div class="col-sm-4 main">
+      <form #f="ngForm">
+
+        <mat-card class="mat-card" *ngFor="let question of questions">
+          <mat-card-header>
+            {{question.questionText}}
+          </mat-card-header>
+          <mat-card-subtitle>
+
+          </mat-card-subtitle>
+          <mat-card-content>
+            <ul class="list-group">
+              <div *ngFor="let option of question.questionOptions">
+                <div class="row">
+                  <div class="col-sm-12" @fadeIn>
+                    <li class="list-group-item list-group-item-action">{{option.optionText}} <mat-checkbox
+                        color="primary" (change)="addAKeyACount(option.id, 1)"></mat-checkbox>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+        <!-- <ul class="list-group">
+          <li class="list-group-item" *ngFor="let question of questions">
+            <div class="question-name">
+              {{question.questionText}}
+            </div>
+            <ul class="list-group">
+              <div *ngFor="let option of question.questionOptions">
+                <div class="row">
+                  <div class="col-sm-12" @fadeIn>
+                    <li class="list-group-item list-group-item-action">{{option.optionText}} <mat-checkbox
+                        color="primary" (change)="addAKeyACount(option.id, 1)"></mat-checkbox>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </li>
+        </ul> -->
+
+
+        <input required type="checkbox" ngModel name="hasAgreed"> I agree to terms of survey
+
+
+        <div class="submit-button-div">
+          <button mat-raised-button (click)="submit(f)" [disabled]="!f.valid">Submit</button>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-sm-2 ld-blue2"></div>
+    <div class="col-sm-2 dark-blue"></div>
+  </div>
+</div>
